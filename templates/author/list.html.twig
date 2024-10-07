@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Library: list</title>
+</head>
+<body>
+<h1>Author List</h1>
+{% if authors is defined and authors is not empty %}
+    <table>
+        <tr><th>Author Name</th><th> Author picture</th></tr>
+        {% set total_books=0  %}
+        <tr {% for author in authors %}>
+            {% set total_books= total_books +author.nbrBooks %}
+            <td> {{ author.name|upper }}</td>
+            <td><img src="{{ asset(author.picture) }}"></td>
+            <td><a href="{{ path("app_showDetail",{'id':author.id}) }}">show_Details</a></td>
+        </tr {% endfor %}>
+    </table>
+
+    <h2>this table contains {{ authors|length}} authors and {{ total_books }} books</h2>
+    {% else %}
+    <h2> the table is not defined or empty</h2>
+{% endif %}
+</body>
+</html>
+?
