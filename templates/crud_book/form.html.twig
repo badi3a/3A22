@@ -1,0 +1,44 @@
+<html>
+<head></head>
+<body>
+   <h1>Add new Book</h1>
+     {{ form_start(form) }}
+      <table>
+          <tr>
+              <td>
+                  Title
+              </td>
+              <td>
+                  {{ form_widget(form.title) }}
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  nbr_page
+              </td>
+              <td>
+                  {{ form_widget(form.nbrPages) }}
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  Author name
+              </td>
+              <td>
+                  {{ form_widget(form.author) }}
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  Picture
+              </td>
+              <td>
+                  {{ form_widget(form.picture) }}
+              </td>
+          </tr>
+
+      </table>
+        <input type="submit" value="save">
+      {{ form_end(form) }}
+</body>
+</html>

@@ -55,5 +55,16 @@ class CrudAuthorController extends AbstractController
         }
         return $this->redirectToRoute('app_list_author');
     }
+    #[Route("/update/{id}", name:"app_update_author")]
+    public function updateAuthor(ManagerRegistry $doctrine,Author $author):Response{
+
+        // $author=$authorRepository->find($id);
+        if($author){
+            $em=$doctrine->getManager();
+            $author->setName("Aziz");
+            $em->flush();
+        }
+        return $this->redirectToRoute('app_list_author');
+    }
 
 }
