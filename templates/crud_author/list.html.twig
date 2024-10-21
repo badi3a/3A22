@@ -4,6 +4,9 @@
     <title >3A22</title>
 </head>
 <body>
+<ul>
+    <li><a href="{{ path('app_list_author') }}">show authors</a> </li><li><a href="{{ path('app_crud_book') }}">show books</a> </li>
+</ul>
     <h1>List of authors</h1>
 <table class="">
     <thead>
@@ -21,5 +24,6 @@
         {% endfor %}
     </tbody>
 </table>
+<a href="{{ path('app_new_author') }}">add a new author</a>
 </body>
 </html>

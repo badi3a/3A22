@@ -67,4 +67,10 @@ class CrudAuthorController extends AbstractController
         return $this->redirectToRoute('app_list_author');
     }
 
+    public function searchLikeName()
+    {
+        ///
+
+    }
+
 }

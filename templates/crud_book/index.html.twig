@@ -6,7 +6,6 @@
        <input type="text" name="authorName" placeholder="searhc by author name">
        <input type="submit" value="search">
    </form>
-   <a href={{ path('app_new_book') }}>add</a>
   <table border="1">
       <tr><th>id</th><th>title</th><th>author Name</th></tr>
       <tr {% for book in books %}>
@@ -16,5 +15,6 @@
           <td><a href={{ path('app_editbook',{'id':book.id}) }}>Edit</a></td>
       </tr {% endfor %}>
   </table>
+   <a href="{{ path('app_new_book') }}">add a new book</a>
 </body>
 </html>
