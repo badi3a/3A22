@@ -6,15 +6,22 @@ use App\Entity\Author;
 use App\Repository\AuthorRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 #[Route('/crud')]
 class CrudAuthorController extends AbstractController
 {
     #[Route('/list', name: 'app_list_author')]
-    public function list(AuthorRepository $authorRepository): Response
+    public function list(AuthorRepository $authorRepository, Request $request): Response
     {
-        $authors=$authorRepository->findAll();
+        $email=$request->get('search');
+        if($email){
+            $authors=$authorRepository->findAuthorsByEmail($email);
+        }
+        else{
+            $authors=$authorRepository->findAll();
+        }
         return $this->render('crud_author/list.html.twig', [
             'authors' => $authors,
         ]);
@@ -72,5 +79,13 @@ class CrudAuthorController extends AbstractController
         ///
 
     }
+#[Route("/searchemail", name:"app_searchbyemail_author")]
+public function searchByEmail(AuthorRepository $authorRepository,Request $request)
+{
+
+
+    return $this->render('crud_author\list.html.twig',['authors' => $authors]);
+
+}
 
 }

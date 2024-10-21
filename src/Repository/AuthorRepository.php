@@ -59,8 +59,8 @@ class AuthorRepository extends ServiceEntityRepository
 
     public function findAuthorsByEmail($value):array {
         $em=$this->getEntityManager();
-        $query=$em->createQuery('SELECT a FROM App:Author a WHERE a.email LIKE :email')
-            ->setParameter('email', $value);
+        $query=$em->createQuery('SELECT a FROM App\Entity\Author a WHERE a.email LIKE :email')
+            ->setParameter('email', '%'.$value.'%');
         return $query->getResult();
     }
 }

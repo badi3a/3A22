@@ -8,7 +8,12 @@
     <li><a href="{{ path('app_list_author') }}">show authors</a> </li><li><a href="{{ path('app_crud_book') }}">show books</a> </li>
 </ul>
     <h1>List of authors</h1>
-<table class="">
+<form method="get" action={{ path('app_list_author') }}>
+    <input type="text" name="search">
+    <button type="submit">search</button>
+</form>
+
+<table>
     <thead>
         <tr>
             <th>Author Name</th>
@@ -21,9 +26,13 @@
             <td>{{ author.name }}</td>
             <td>{{ author.email }}</td>
         </tr>
+        {% else %}
+            <p>No authors found</p>
         {% endfor %}
+
     </tbody>
 </table>
+
 <a href="{{ path('app_new_author') }}">add a new author</a>
 </body>
 </html>
