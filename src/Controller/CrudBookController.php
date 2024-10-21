@@ -17,16 +17,7 @@ class CrudBookController extends AbstractController
     #[Route('/', name: 'app_crud_book')]
     public function index(BookRepository $repository,AuthorRepository $authorRep, Request $request): Response
     {   $authorName=$request->query->get('authorName');
-        if($authorName==''){
-            $books=$repository->findAll();
-        }else{
-            //search author by AuthorName
-              $author=$authorRep->findOneBy(['name'=>$authorName]);
-            //books by author Name
-            //repositoryBook => findByAuthor
-            $books=$repository->findByAuthor($author);
-            if(count($books)==0){
-                return  new Response('No books found');
+        GITeturn  new Response('No books found');
             }
         }
         return $this->render('crud_book/index.html.twig', [
